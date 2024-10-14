@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data Pelanggan</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Data Pelanggan</h2>
+        <form action="/update/<%= user.id %>" method="post" class="form">
+            <label for="name">Nama Pelanggan:</label>
+            <input type="text" id="name" name="name" value="<%= user.name %>" required>
+
+            <label for="datetime">Waktu Reservasi:</label>
+            <input type="datetime-local" name="datetime" id="datetime" value="<%= user.datetime.toISOString().slice(0,16) %>" required>
+
+            <label for="partysize">Jumlah Orang:</label>
+            <input type="number" name="partysize" id="partysize" value="<%= user.partysize %>" min="1" required>
+
+            <label for="phone">Nomor Telepon:</label>
+            <input type="tel" name="phone" id="phone" value="<%= user.phone %>" required>
+
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+    </div>
+</body>
+</html>

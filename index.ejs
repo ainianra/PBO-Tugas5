@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeachyNeats Restaurant</title>
+    <link rel="stylesheet" href="/styles.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di PeachyNeats Restaurant</h1>
+        <h2>Rasakan Keindahan dan Kenikmatan Kuliner</h2>
+    </header>
+
+        <h2>Galeri</h2>
+        <div class="gallery">
+            <img src="/gambar1.jpeg" alt="gambar1">
+            <img src="/gambar2.jpeg" alt="gambar2">
+            <img src="/gambar3.jpeg" alt="gambar3">
+            <img src="/gambar4.jpeg" alt="gambar4">
+            <img src="/gambar5.jpeg" alt="gambar5">
+            <img src="/gambar6.jpeg" alt="gambar6">
+        </div>        
+
+        <div class="menu">
+            <h3>Menu Kami</h3>
+            <div class="menu-item">
+                <span>Pizza Margherita</span>
+                <span>Rp 80.000</span>
+            </div>
+            <div class="menu-item">
+                <span>Pasta Carbonara</span>
+                <span>Rp 75.000</span>
+            </div>
+            <div class="menu-item">
+                <span>Sushi Rolls</span>
+                <span>Rp 100.000</span>
+            </div>
+            <div class="menu-item">
+                <span>Salad Caesar</span>
+                <span>Rp 55.000</span>
+            </div>
+            <div class="menu-item">
+                <span>Steak Daging Sapi</span>
+                <span>Rp 150.000</span>
+            </div>
+            <div class="menu-item">
+                <span>Chocolate Lava Cake</span>
+                <span>Rp 45.000</span>
+            </div>
+        </div>
+
+        <h2>Daftar Pelanggan Reservasi</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Tanggal Reservasi</th>
+                    <th>Jumlah Orang</th>
+                    <th>Nomor Telepon</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(User) { %>
+                <tr>
+                    <td><%= User.id %></td>
+                    <td><%= User.name %></td>
+                    <td>
+                        <%= new Date(User.datetime).toLocaleString('id-ID', {
+                            weekday: 'short',
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        }) %>
+                    </td>
+                    <td><%= User.partysize %></td>
+                    <td><%= User.phone %></td>
+                    <td>
+                        <a href="/edit/<%= User.id %>" class="button">Edit</a>
+                        <a href="/delete/<%= User.id %>" class="button delete">Cancel</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table><br>
+
+        <h2>Tambah Pelanggan Baru</h2>
+        <form action="/add" method="post" class="form">
+            <label for="name">Nama Pelanggan:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="datetime">Waktu Reservasi:</label>
+            <input type="datetime-local" name="datetime" id="datetime" required>
+
+            <label for="partysize">Jumlah Orang:</label>
+            <input type="number" name="partysize" id="partysize" min="1" required>
+
+            <label for="phone">Nomor Telepon:</label>
+            <input type="tel" name="phone" id="phone" required>
+
+            <button type="submit">Tambah</button>
+        </form>
+    </div>
+</body>
+</html>
